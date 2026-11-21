@@ -1,0 +1,30 @@
+[project]
+name = "multiligual-rag"
+version = "0.1.0"
+description = "Evidence-grounded English, Hindi, and Hinglish document QA"
+readme = "README.md"
+authors = [
+    { name = "Compile-Abhay-Chandra", email = "abhaychandra7360@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "python-multipart>=0.0.9",
+    "langgraph>=0.2.0",
+    "langchain-groq>=0.2.0",
+    "python-dotenv>=1.0.1",
+    "pypdf>=5.0.0",
+    "scikit-learn>=1.5.0",
+    "numpy>=1.26.0",
+    "sentence-transformers>=3.0.0",
+    "streamlit>=1.38.0",
+    "requests>=2.32.0",
+]
+
+[project.scripts]
+multiligual-rag-api = "multiligual_rag.api:run"
+
+[build-system]
+requires = ["uv_build>=0.13.5,<0.14.0"]
+build-backend = "uv_build"
