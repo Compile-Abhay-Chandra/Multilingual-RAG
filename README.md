@@ -1,8 +1,16 @@
 # IndicRAG-QA
 
-An evidence-grounded document question-answering starter for **English, Hindi, and Hinglish**. The application combines a **FastAPI** service, a **LangGraph** retrieve/assess/answer workflow, **Groq** for answer generation, and a **Streamlit** interface.
+An evidence-grounded document question-answering prototype for **English, Hindi, and Hinglish** queries over documents. The application combines a **FastAPI** service, a **LangGraph** retrieve/assess/answer workflow, **Groq** for answer generation, and a **Streamlit** interface.
 
 This is an implementation of the supplied project idea, not a claim that multilingual retrieval or abstention is novel. It provides an extensible demo and baseline experiments; evaluate it on a labeled domain dataset before making performance claims.
+
+## Problem statement
+
+People may ask questions in English, an Indic language, or an English–Indic code-mixed form, while the information they need is written in a different language or phrased differently. Keyword matching can miss relevant information across those language and wording differences.
+
+IndicRAG-QA aims to retrieve relevant passages from supplied documents and generate an answer grounded only in that evidence. If the retrieved evidence does not support an answer, the system should return **UNANSWERABLE** rather than fill gaps with unsupported model knowledge.
+
+This is the project goal, not a claim of achieved cross-lingual performance. The currently inventoried sample corpus is English-only, and the available QA dataset and evaluation are unreviewed drafts; see [Current sample-document snapshot](#current-sample-document-snapshot) and [Reproducible evaluation](#reproducible-evaluation).
 
 ## What it does
 
@@ -11,7 +19,7 @@ This is an implementation of the supplied project idea, not a claim that multili
 - Compare **lexical** character n-gram TF-IDF, **dense** multilingual sentence embeddings, and **hybrid** reciprocal-rank fusion.
 - Use a LangGraph workflow to retrieve passages, apply a configurable starter evidence threshold, and either abstain or call Groq.
 - Require the answer to use only retrieved excerpts and cite passage IDs. Return the retrieved excerpts and scores for inspection.
-- Ask in English, Hindi (Devanagari), or Hinglish. Although the selected embedding model covers additional languages, this project's supported query languages are limited to these three; evaluate performance on your own dataset.
+- Accept English, Hindi (Devanagari), or Hinglish queries. Although the selected embedding model covers additional languages, this project's intended query-language scope is limited to these three; evaluate cross-lingual performance on a reviewed dataset before drawing conclusions.
 - Run a local experiment comparing retrieval methods, RAG QA, and direct LLM QA, with threshold tuning on validation data and separate language-slice metrics.
 
 ## Architecture
