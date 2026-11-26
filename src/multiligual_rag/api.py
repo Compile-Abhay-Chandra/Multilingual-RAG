@@ -2,19 +2,18 @@
 
 from __future__ import annotations
 
-import hashlib
-import io
 import re
+import hashlib
 from contextlib import asynccontextmanager
 from typing import Literal
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
-from pypdf import PdfReader
 
+from multiligual_rag.corpus import extract_bytes
 from multiligual_rag.graph import build_graph
-from multiligual_rag.retrieval import Passage, PassageIndex
+from multiligual_rag.retrieval import PassageIndex
 
 load_dotenv()
 
@@ -27,27 +26,6 @@ class QuestionRequest(BaseModel):
     question: str = Field(min_length=2, max_length=4000)
     retrieval_method: Literal["lexical", "dense", "hybrid"] = "hybrid"
     top_k: int = Field(default=5, ge=1, le=20)
-
-
-def _chunks(text: str, max_chars: int = 900, overlap: int = 120) -> list[str]:
-    text = re.sub(r"\s+", " ", text).strip()
-    if not text:
-        return []
-    chunks: list[str] = []
-    start = 0
-    while start < len(text):
-        end = min(start + max_chars, len(text))
-        if end < len(text):
-            boundary = text.rfind(" ", start + max_chars // 2, end)
-            if boundary > start:
-                end = boundary
-        part = text[start:end].strip()
-        if part:
-            chunks.append(part)
-        if end >= len(text):
-            break
-        start = max(end - overlap, start + 1)
-    return chunks
 
 
 @asynccontextmanager
@@ -84,26 +62,15 @@ async def upload_document(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail="The uploaded file is empty.")
     if len(raw) > 20 * 1024 * 1024:
         raise HTTPException(status_code=413, detail="The maximum upload size is 20 MB.")
-    doc_id = hashlib.sha1(filename.encode("utf-8") + raw).hexdigest()[:12]
-    pages: list[tuple[int | None, str]] = []
     try:
-        if suffix == "pdf":
-            reader = PdfReader(io.BytesIO(raw))
-            pages = [(i + 1, page.extract_text() or "") for i, page in enumerate(reader.pages)]
-        else:
-            pages = [(None, raw.decode("utf-8-sig"))]
+        new_passages = extract_bytes(filename, raw)
+        doc_id = hashlib.sha1(filename.encode("utf-8") + raw).hexdigest()[:12]
     except Exception as exc:
         raise HTTPException(status_code=400, detail=f"Could not read document: {exc}") from exc
-    new_passages: list[Passage] = []
-    for page, content in pages:
-        for chunk_num, chunk in enumerate(_chunks(content), start=1):
-            page_part = f"p{page}" if page else "text"
-            passage_id = f"{doc_id}-{page_part}-c{chunk_num}"
-            new_passages.append(Passage(passage_id, doc_id, filename, chunk, page))
     if not new_passages:
         raise HTTPException(status_code=400, detail="No extractable text was found in this file.")
     index.add(new_passages)
-    metadata = {"document_id": doc_id, "filename": filename, "passage_count": len(new_passages), "pages": len(pages)}
+    metadata = {"document_id": doc_id, "filename": filename, "passage_count": len(new_passages), "pages": len({p.page for p in new_passages if p.page})}
     documents[doc_id] = metadata
     return metadata
 

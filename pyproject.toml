@@ -24,6 +24,7 @@ dependencies = [
 
 [project.scripts]
 multiligual-rag-api = "multiligual_rag.api:run"
+indicrag-evaluate = "multiligual_rag.evaluate:main"
 
 [build-system]
 requires = ["uv_build>=0.13.5,<0.14.0"]

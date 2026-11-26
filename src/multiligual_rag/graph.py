@@ -15,6 +15,7 @@ from multiligual_rag.retrieval import Hit, PassageIndex, RetrievalMethod
 load_dotenv()
 
 ABSTENTION = "Insufficient information is available in the uploaded documents to answer this question."
+DEFAULT_THRESHOLDS = {"lexical": 0.10, "dense": 0.34, "hybrid": 0.34}
 
 
 class QAState(TypedDict, total=False):
@@ -27,7 +28,8 @@ class QAState(TypedDict, total=False):
     model: str
 
 
-def build_graph(index: PassageIndex):
+def build_graph(index: PassageIndex, thresholds: dict[str, float] | None = None):
+    evidence_thresholds = {**DEFAULT_THRESHOLDS, **(thresholds or {})}
     def retrieve(state: QAState) -> QAState:
         hits = index.search(state["question"], state.get("method", "hybrid"), state.get("top_k", 5))
         return {"hits": hits}
@@ -36,7 +38,7 @@ def build_graph(index: PassageIndex):
         hits = state.get("hits", [])
         method = state.get("method", "hybrid")
         # Thresholds are starter defaults. Calibrate against a labeled validation set.
-        threshold = {"lexical": 0.10, "dense": 0.34, "hybrid": 0.34}[method]
+        threshold = evidence_thresholds[method]
         answerable = bool(hits and hits[0].evidence_score >= threshold)
         return {"answerable": answerable, "answer": "" if answerable else ABSTENTION}
 

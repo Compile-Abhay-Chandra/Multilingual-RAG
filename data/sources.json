@@ -1,0 +1,12 @@
+[
+  {
+    "source_id": "pm-usp-csss-faq-2025-26",
+    "title": "PM-USP Central Sector Scheme of Scholarship for College and University Students (CSSS): Frequently Asked Questions 2025-26",
+    "publisher": "Department of Higher Education, Ministry of Education, Government of India",
+    "language": "English",
+    "source_type": "official FAQ PDF",
+    "url": "https://www.education.gov.in/sites/upload_files/mhrd/files/upload_document/FAQs_PM_USP2526.pdf",
+    "use": "Recommended primary source for a real public-information corpus; download and archive a dated copy before creating gold passage IDs.",
+    "notes": "The URL was indexed by the Ministry website, but a direct download returned HTTP 404 during project setup. Do not treat this source as locally archived or use its facts as benchmark labels until the document is obtained and reviewed."
+  }
+]

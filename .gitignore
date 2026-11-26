@@ -9,4 +9,7 @@ wheels/
 # Virtual environments
 .venv
 .env
-sample_data/
+sample_data/*
+!sample_data/demo_scholarship_policy.pdf
+!sample_data/demo_scholarship_policy_hi.html
+results/

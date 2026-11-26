@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 from collections.abc import Iterable, Sequence
+from collections import Counter
+import re
+import string
 
 
 def retrieval_metrics(ranked_passage_ids: Sequence[Sequence[str]], gold_passage_ids: Sequence[Iterable[str]], k: int = 5) -> dict[str, float]:
@@ -57,4 +60,30 @@ def answerability_metrics(predicted: Sequence[bool], gold: Sequence[bool]) -> di
         "true_negative": tn,
         "false_positive": fp,
         "false_negative": fn,
+    }
+
+
+def _normalize_answer(text: str) -> list[str]:
+    text = text.lower().translate(str.maketrans("", "", string.punctuation))
+    return re.sub(r"\s+", " ", text).strip().split()
+
+
+def qa_metrics(predicted: Sequence[str], references: Sequence[str]) -> dict[str, float]:
+    """Compute exact match and token F1 (English/Hindi whitespace-token baseline)."""
+    if len(predicted) != len(references):
+        raise ValueError("Predictions and references must have equal length.")
+    exact: list[float] = []
+    f1_scores: list[float] = []
+    for answer, reference in zip(predicted, references):
+        pred_tokens = _normalize_answer(answer)
+        ref_tokens = _normalize_answer(reference)
+        exact.append(float(pred_tokens == ref_tokens))
+        common = sum((Counter(pred_tokens) & Counter(ref_tokens)).values())
+        precision = common / len(pred_tokens) if pred_tokens else 0.0
+        recall = common / len(ref_tokens) if ref_tokens else 0.0
+        f1_scores.append(2 * precision * recall / (precision + recall) if precision + recall else 0.0)
+    return {
+        "exact_match": sum(exact) / len(exact) if exact else 0.0,
+        "token_f1": sum(f1_scores) / len(f1_scores) if f1_scores else 0.0,
+        "count": float(len(exact)),
     }

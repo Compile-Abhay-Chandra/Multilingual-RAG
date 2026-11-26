@@ -1,0 +1,762 @@
+{
+  "split": "test",
+  "count": 57,
+  "thresholds_calibrated_on": "validation",
+  "thresholds": {
+    "lexical": 0.12757087241247092,
+    "dense": 0.5149211883544922,
+    "hybrid": 0.43438127636909485
+  },
+  "methods": {
+    "lexical": {
+      "retrieval": {
+        "recall@k": 0.5833333333333334,
+        "precision@k": 0.5833333333333334,
+        "hit_rate@k": 0.5833333333333334,
+        "mrr": 0.5833333333333334,
+        "answerable_count": 48.0
+      },
+      "answerability": {
+        "accuracy": 0.9824561403508771,
+        "precision": 1.0,
+        "recall": 0.9791666666666666,
+        "f1": 0.9894736842105264,
+        "true_positive": 47,
+        "true_negative": 9,
+        "false_positive": 0,
+        "false_negative": 1
+      },
+      "rag_qa": {
+        "exact_match": 0.0,
+        "token_f1": 0.46959742918892466,
+        "count": 48.0
+      },
+      "direct_llm_qa": {
+        "exact_match": 0.0,
+        "token_f1": 0.150483687812514,
+        "count": 48.0
+      },
+      "language_slices": {
+        "english": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "true_positive": 16,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 0
+          },
+          "retrieval": {
+            "recall@k": 0.4375,
+            "precision@k": 0.4375,
+            "hit_rate@k": 0.4375,
+            "mrr": 0.4375,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.5215969266203293,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.0425531914893617,
+            "count": 16.0
+          }
+        },
+        "hindi": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 0.9473684210526315,
+            "precision": 1.0,
+            "recall": 0.9375,
+            "f1": 0.967741935483871,
+            "true_positive": 15,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 1
+          },
+          "retrieval": {
+            "recall@k": 0.8125,
+            "precision@k": 0.8125,
+            "hit_rate@k": 0.8125,
+            "mrr": 0.8125,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.523335668161301,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.1547701857872464,
+            "count": 16.0
+          }
+        },
+        "hinglish": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "true_positive": 16,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 0
+          },
+          "retrieval": {
+            "recall@k": 0.5,
+            "precision@k": 0.5,
+            "hit_rate@k": 0.5,
+            "mrr": 0.5,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.3638596927851437,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.2541276861609339,
+            "count": 16.0
+          }
+        }
+      },
+      "manual_unanswerable_review": [
+        {
+          "id": "ood-018-en",
+          "question": "What is the menu at a restaurant near the campus today?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know.",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p2-c2",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 2,
+              "text": "renewal of scholarships in 2nd/ 3rd years subject to fulfilment of certain eligibility conditions. The students have to apply again in the same portal as renewal applicant and provide necessary marksheets, etc. for this. The applicant should not receive scholarship from any other department/ ministry. 5. What is the duration of scholarships and criteria for renewal under the scheme? A student will be eligible for the scholarship for a total duration not exceeding 5 years. A scholarship under the scheme is renewable on year-to-year basis up to Post Graduate level (except for the students pursuing technical courses leading to degree at graduation level). Student must secure at least 50% marks and maintain adequate attendance of at least 75%. 6. What is the methodology for disbursement of scholarship under the Scheme? Scholarship is disbursed through Direct Benefit Transfer (DBT) mode"
+            }
+          ]
+        },
+        {
+          "id": "ood-018-hi",
+          "question": "आज कैंपस के पास किसी रेस्तराँ का मेनू क्या है?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "माफ़ कीजिए, मैं इस अनुरोध को पूरा नहीं कर सकता।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p1-c1",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 1,
+              "text": "Implemented by AICTE OPPORTUNITY TO GRADUATE FROM THE BEST INSTITUTIONS IN THE COUNTRY SPECIAL SCHOLARSHIP SCHEME FOR THE STUDENTS OF UNION TERRITORIES OF JAMMU & KASHMIR AND LADAKH PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA"
+            }
+          ]
+        },
+        {
+          "id": "ood-018-hx",
+          "question": "Aaj campus ke paas restaurant ka menu kya hai?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे इस बारे में जानकारी नहीं है।",
+          "retrieved_passages": [
+            {
+              "passage_id": "6990a35eb6a3-p38-c2",
+              "document_name": "e1f597c04d674122a5e56bd71d03302b.pdf",
+              "page": 38,
+              "text": "on.  Nodal Officer may guide the candidate during her/his stay in the college campus.  Candidates are advised to visit AICTE website (www.aicte-india.org-> https://www.aicte-india.org/bureaus/jk- >https://www.aicte- india.org/bureaus/jk/2025-2026 ) for all PMSSS updates.  NO fresh registrations shall be allowed in next/subsequent rounds of counselling.  Candidates must bring the ORIGINAL and one set of SELF-ATTESTED photocopies of the documents at the time of reporting for final admission in allotted University / Institute  The candidates are advised to refer the fees structure and other details of Institute before freezing of seat."
+            }
+          ]
+        },
+        {
+          "id": "ood-019-en",
+          "question": "What is the current US dollar to Indian rupee exchange rate?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know the current US dollar to Indian rupee exchange rate.",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p2-c2",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 2,
+              "text": "renewal of scholarships in 2nd/ 3rd years subject to fulfilment of certain eligibility conditions. The students have to apply again in the same portal as renewal applicant and provide necessary marksheets, etc. for this. The applicant should not receive scholarship from any other department/ ministry. 5. What is the duration of scholarships and criteria for renewal under the scheme? A student will be eligible for the scholarship for a total duration not exceeding 5 years. A scholarship under the scheme is renewable on year-to-year basis up to Post Graduate level (except for the students pursuing technical courses leading to degree at graduation level). Student must secure at least 50% marks and maintain adequate attendance of at least 75%. 6. What is the methodology for disbursement of scholarship under the Scheme? Scholarship is disbursed through Direct Benefit Transfer (DBT) mode"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-hi",
+          "question": "अमेरिकी डॉलर और भारतीय रुपये की वर्तमान विनिमय दर क्या है?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे वास्तविक‑समय डेटा तक पहुँच नहीं है, इसलिए वर्तमान अमेरिकी डॉलर‑भारतीय रुपये की विनिमय दर प्रदान नहीं कर सकता। नवीनतम दर के लिए विश्वसनीय वित्तीय वेबसाइट या बैंक की साइट देखें।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p1-c1",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 1,
+              "text": "Implemented by AICTE OPPORTUNITY TO GRADUATE FROM THE BEST INSTITUTIONS IN THE COUNTRY SPECIAL SCHOLARSHIP SCHEME FOR THE STUDENTS OF UNION TERRITORIES OF JAMMU & KASHMIR AND LADAKH PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-hx",
+          "question": "Abhi US dollar aur Indian rupee ka exchange rate kya hai?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे वास्तविक‑समय डेटा तक पहुँच नहीं है, इसलिए वर्तमान US डॉलर‑भारतीय रुपये का सटीक विनिमय दर नहीं बता सकता। कृपया किसी विश्वसनीय वित्तीय वेबसाइट या बैंक से नवीनतम दर देखें।",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p4-c4",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 4,
+              "text": "check the SMS from NIC-NSP regularly. c. NIC and MoE do not send any communication other than Email/SMS. d. No change in E-mail ID and mobile number will be entertained during the entire process. e. The demographic details provided in the OTR login, need to be same as that in the Aadhaar and the 12th examination marks sheet. f. Any change in the demographic details like Name, Father’s Name, Date of Birth, Contact Information need to be performed in the OTR login and the same need to be authenticated through e-KYC and face authentication again."
+            }
+          ]
+        },
+        {
+          "id": "ood-020-en",
+          "question": "Will it rain in Ladakh today?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know.",
+          "retrieved_passages": [
+            {
+              "passage_id": "6990a35eb6a3-p35-c1",
+              "document_name": "e1f597c04d674122a5e56bd71d03302b.pdf",
+              "page": 35,
+              "text": "SSS J&K AND LADAKH CONFIRMATION OF ALLOTTED SEAT BY THE STUDENT"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-hi",
+          "question": "क्या आज लद्दाख में बारिश होगी?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे नहीं पता।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p1-c1",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 1,
+              "text": "Implemented by AICTE OPPORTUNITY TO GRADUATE FROM THE BEST INSTITUTIONS IN THE COUNTRY SPECIAL SCHOLARSHIP SCHEME FOR THE STUDENTS OF UNION TERRITORIES OF JAMMU & KASHMIR AND LADAKH PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-hx",
+          "question": "Kya aaj Ladakh mein rain hogi?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे आज के मौसम की वास्तविक जानकारी नहीं है, इसलिए यह बता पाना संभव नहीं है।",
+          "retrieved_passages": [
+            {
+              "passage_id": "6990a35eb6a3-p35-c1",
+              "document_name": "e1f597c04d674122a5e56bd71d03302b.pdf",
+              "page": 35,
+              "text": "SSS J&K AND LADAKH CONFIRMATION OF ALLOTTED SEAT BY THE STUDENT"
+            }
+          ]
+        }
+      ],
+      "threshold_used": 0.12757087241247092
+    },
+    "dense": {
+      "retrieval": {
+        "recall@k": 0.0,
+        "precision@k": 0.0,
+        "hit_rate@k": 0.0,
+        "mrr": 0.0,
+        "answerable_count": 48.0
+      },
+      "answerability": {
+        "accuracy": 0.9824561403508771,
+        "precision": 1.0,
+        "recall": 0.9791666666666666,
+        "f1": 0.9894736842105264,
+        "true_positive": 47,
+        "true_negative": 9,
+        "false_positive": 0,
+        "false_negative": 1
+      },
+      "rag_qa": {
+        "exact_match": 0.0,
+        "token_f1": 0.3052839110747119,
+        "count": 48.0
+      },
+      "direct_llm_qa": {
+        "exact_match": 0.0,
+        "token_f1": 0.150483687812514,
+        "count": 48.0
+      },
+      "language_slices": {
+        "english": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "true_positive": 16,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 0
+          },
+          "retrieval": {
+            "recall@k": 0.0,
+            "precision@k": 0.0,
+            "hit_rate@k": 0.0,
+            "mrr": 0.0,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.38388909650931946,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.0425531914893617,
+            "count": 16.0
+          }
+        },
+        "hindi": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 0.9473684210526315,
+            "precision": 1.0,
+            "recall": 0.9375,
+            "f1": 0.967741935483871,
+            "true_positive": 15,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 1
+          },
+          "retrieval": {
+            "recall@k": 0.0,
+            "precision@k": 0.0,
+            "hit_rate@k": 0.0,
+            "mrr": 0.0,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.29225747715876604,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.1547701857872464,
+            "count": 16.0
+          }
+        },
+        "hinglish": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "true_positive": 16,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 0
+          },
+          "retrieval": {
+            "recall@k": 0.0,
+            "precision@k": 0.0,
+            "hit_rate@k": 0.0,
+            "mrr": 0.0,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.23970515955605032,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.2541276861609339,
+            "count": 16.0
+          }
+        }
+      },
+      "manual_unanswerable_review": [
+        {
+          "id": "ood-018-en",
+          "question": "What is the menu at a restaurant near the campus today?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know.",
+          "retrieved_passages": [
+            {
+              "passage_id": "6990a35eb6a3-p17-c1",
+              "document_name": "e1f597c04d674122a5e56bd71d03302b.pdf",
+              "page": 17,
+              "text": "Address Details"
+            }
+          ]
+        },
+        {
+          "id": "ood-018-hi",
+          "question": "आज कैंपस के पास किसी रेस्तराँ का मेनू क्या है?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "माफ़ कीजिए, मैं इस अनुरोध को पूरा नहीं कर सकता।",
+          "retrieved_passages": [
+            {
+              "passage_id": "6990a35eb6a3-p17-c1",
+              "document_name": "e1f597c04d674122a5e56bd71d03302b.pdf",
+              "page": 17,
+              "text": "Address Details"
+            }
+          ]
+        },
+        {
+          "id": "ood-018-hx",
+          "question": "Aaj campus ke paas restaurant ka menu kya hai?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे इस बारे में जानकारी नहीं है।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p7-c2",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 7,
+              "text": "goals. Hailing from Ladakh, a region with limited educational resources, accessing higher education can be challenging. SSSJKL has been a true game-changer for students like me by easing ﬁnancial burdens and making quality education attainable. SHRIYA TICKOOLNCT, Bhopal I am Shriya Tickoo. With the support of PMSSS, I completed my degree in Electronics Communication and Engineering from Lakshmi Narain College of Technology, Bhopal, and secured a job at Accenture. As a ﬁrst-generation college student, this scholarship has opened doors I once thought were beyond my reach, transforming my future in ways I had never imagined. ARYANArmy Institute of Technology Pune I am Aryan. With the support of the PMSSS,I completed BE in Computer Science Engineering at Army Institute of Technology, Pune, and secured a position as Project Manager at Rolling Arrays. I am deeply grateful for this"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-en",
+          "question": "What is the current US dollar to Indian rupee exchange rate?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know the current US dollar to Indian rupee exchange rate.",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p2-c1",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 2,
+              "text": "year 2022-23, subject to the condition that guidelines of Ministry of Finance and NITI Aayog regarding SC/ST fund allocation of the schemes are adhered to. 3. What is the rate of scholarship under the Scheme? The rate of scholarship is Rs. 12,000/- per annum at Graduation level for first three years of College and University courses and Rs. 20,000/- per annum at Post-Graduation level. Students pursuing technical courses are paid Rs. 20,000/- per annum in the 4th and 5th year. Students pursing B.Tech/ BE would get scholarship for 4 years only i.e Rs. 12000 per annum for first three years and Rs. 20,000 per annum in the 4th year. 4. How a second/ third/ fourth year student gets scholarships? All the students finally selected for scholarship in first year are eligible for renewal of scholarships in 2nd/ 3rd years subject to fulfilment of certain eligibility conditions. The students have to"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-hi",
+          "question": "अमेरिकी डॉलर और भारतीय रुपये की वर्तमान विनिमय दर क्या है?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे वास्तविक‑समय डेटा तक पहुँच नहीं है, इसलिए वर्तमान अमेरिकी डॉलर‑भारतीय रुपये की विनिमय दर प्रदान नहीं कर सकता। नवीनतम दर के लिए विश्वसनीय वित्तीय वेबसाइट या बैंक की साइट देखें।",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p2-c1",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 2,
+              "text": "year 2022-23, subject to the condition that guidelines of Ministry of Finance and NITI Aayog regarding SC/ST fund allocation of the schemes are adhered to. 3. What is the rate of scholarship under the Scheme? The rate of scholarship is Rs. 12,000/- per annum at Graduation level for first three years of College and University courses and Rs. 20,000/- per annum at Post-Graduation level. Students pursuing technical courses are paid Rs. 20,000/- per annum in the 4th and 5th year. Students pursing B.Tech/ BE would get scholarship for 4 years only i.e Rs. 12000 per annum for first three years and Rs. 20,000 per annum in the 4th year. 4. How a second/ third/ fourth year student gets scholarships? All the students finally selected for scholarship in first year are eligible for renewal of scholarships in 2nd/ 3rd years subject to fulfilment of certain eligibility conditions. The students have to"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-hx",
+          "question": "Abhi US dollar aur Indian rupee ka exchange rate kya hai?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे वास्तविक‑समय डेटा तक पहुँच नहीं है, इसलिए वर्तमान US डॉलर‑भारतीय रुपये का सटीक विनिमय दर नहीं बता सकता। कृपया किसी विश्वसनीय वित्तीय वेबसाइट या बैंक से नवीनतम दर देखें।",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p2-c1",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 2,
+              "text": "year 2022-23, subject to the condition that guidelines of Ministry of Finance and NITI Aayog regarding SC/ST fund allocation of the schemes are adhered to. 3. What is the rate of scholarship under the Scheme? The rate of scholarship is Rs. 12,000/- per annum at Graduation level for first three years of College and University courses and Rs. 20,000/- per annum at Post-Graduation level. Students pursuing technical courses are paid Rs. 20,000/- per annum in the 4th and 5th year. Students pursing B.Tech/ BE would get scholarship for 4 years only i.e Rs. 12000 per annum for first three years and Rs. 20,000 per annum in the 4th year. 4. How a second/ third/ fourth year student gets scholarships? All the students finally selected for scholarship in first year are eligible for renewal of scholarships in 2nd/ 3rd years subject to fulfilment of certain eligibility conditions. The students have to"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-en",
+          "question": "Will it rain in Ladakh today?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know.",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p7-c2",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 7,
+              "text": "goals. Hailing from Ladakh, a region with limited educational resources, accessing higher education can be challenging. SSSJKL has been a true game-changer for students like me by easing ﬁnancial burdens and making quality education attainable. SHRIYA TICKOOLNCT, Bhopal I am Shriya Tickoo. With the support of PMSSS, I completed my degree in Electronics Communication and Engineering from Lakshmi Narain College of Technology, Bhopal, and secured a job at Accenture. As a ﬁrst-generation college student, this scholarship has opened doors I once thought were beyond my reach, transforming my future in ways I had never imagined. ARYANArmy Institute of Technology Pune I am Aryan. With the support of the PMSSS,I completed BE in Computer Science Engineering at Army Institute of Technology, Pune, and secured a position as Project Manager at Rolling Arrays. I am deeply grateful for this"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-hi",
+          "question": "क्या आज लद्दाख में बारिश होगी?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे नहीं पता।",
+          "retrieved_passages": [
+            {
+              "passage_id": "41b5b77fd807-p4-c1",
+              "document_name": "6c3220204e6bd68d195b0ae78df9286c.pdf",
+              "page": 4,
+              "text": "Frequently Asked Questions Page 4 | 7 during academic year 2024-25 in Engineering Stream only. Students must opt for only Engineering Streams in which he\\she is eligible. AICTE will not be responsible, if the student is denied admission by the Institution/ University due to a wrong choice of branch/discipline filled by the particular student. 16. Who will pay the Academic fee? Answer-The Academic fee is paid directly to the institution by AICTE on annual basis as per the orders of State Fee Regulatory Committee of concerned State / UTs. 17. Who will pay the Maintenance allowance? Answer- Maintenance allowance is paid directly to the student’s Aadhaar seeded account by AICTE/NSP. The disbursal is spread over the academic year. Therefore, students must be complete two processes: OTR registration and online registration on the NSP portal. Without registration, the maintenance amount will"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-hx",
+          "question": "Kya aaj Ladakh mein rain hogi?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे आज के मौसम की वास्तविक जानकारी नहीं है, इसलिए यह बता पाना संभव नहीं है।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p7-c1",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 7,
+              "text": "YASHVEER SINGHC. V. Raman Global University Odisha I am Yashveer Singh. With the support of PMSSS, I completed my B.Tech in Civil Engineering at C.V. Raman Global University, Odisha, and secured placement as an Assistant Manager at Adani Road Transport Limited. This journey not only helped me adapt to diverse cultures but also equipped me with valuable skills to achieve success in my professional life. I remain deeply grateful for this transformative opportunity. TASHI ANGMOMaitrei College, Delhi I am Tashi Angmo. SSSJKL helped me to study the course BA at Maitrei College, Delhi, and secure a position as HR in a top MNC company. The SSSJKL has been an invaluable source of support for me, signiﬁcantly enhancing my studies, personal growth, and overall pursuit of my goals. Hailing from Ladakh, a region with limited educational resources, accessing higher education can be challenging."
+            }
+          ]
+        }
+      ],
+      "threshold_used": 0.5149211883544922
+    },
+    "hybrid": {
+      "retrieval": {
+        "recall@k": 0.20833333333333334,
+        "precision@k": 0.20833333333333334,
+        "hit_rate@k": 0.20833333333333334,
+        "mrr": 0.20833333333333334,
+        "answerable_count": 48.0
+      },
+      "answerability": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "true_positive": 48,
+        "true_negative": 9,
+        "false_positive": 0,
+        "false_negative": 0
+      },
+      "rag_qa": {
+        "exact_match": 0.0,
+        "token_f1": 0.382801792502405,
+        "count": 48.0
+      },
+      "direct_llm_qa": {
+        "exact_match": 0.0,
+        "token_f1": 0.150483687812514,
+        "count": 48.0
+      },
+      "language_slices": {
+        "english": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "true_positive": 16,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 0
+          },
+          "retrieval": {
+            "recall@k": 0.1875,
+            "precision@k": 0.1875,
+            "hit_rate@k": 0.1875,
+            "mrr": 0.1875,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.42492877138591045,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.0425531914893617,
+            "count": 16.0
+          }
+        },
+        "hindi": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "true_positive": 16,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 0
+          },
+          "retrieval": {
+            "recall@k": 0.375,
+            "precision@k": 0.375,
+            "hit_rate@k": 0.375,
+            "mrr": 0.375,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.47029644014964084,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.1547701857872464,
+            "count": 16.0
+          }
+        },
+        "hinglish": {
+          "count": 19,
+          "answerability": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "true_positive": 16,
+            "true_negative": 3,
+            "false_positive": 0,
+            "false_negative": 0
+          },
+          "retrieval": {
+            "recall@k": 0.0625,
+            "precision@k": 0.0625,
+            "hit_rate@k": 0.0625,
+            "mrr": 0.0625,
+            "answerable_count": 16.0
+          },
+          "rag_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.25318016597166365,
+            "count": 16.0
+          },
+          "direct_llm_qa": {
+            "exact_match": 0.0,
+            "token_f1": 0.2541276861609339,
+            "count": 16.0
+          }
+        }
+      },
+      "manual_unanswerable_review": [
+        {
+          "id": "ood-018-en",
+          "question": "What is the menu at a restaurant near the campus today?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know.",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p7-c2",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 7,
+              "text": "hip application by selecting the appropriate option from the Drop-Down menu. If a student wants to avail benefits of any other scholarship scheme, then they must withdraw from the present scheme. The scholarship application can be withdrawn by the applicant prior to its final verification by the State Nodal Agency. Note: Do not use the option unless you want to surrender the scholarship. 29. Can I apply for the scholarship if I’m enrolled in a private college? Yes, provided the private college is recognized by a regulatory body (like AICTE, UGC, etc.) and listed on the AISHE portal. 30. Can I apply using EID (Enrollment ID) instead of Aadhaar? Yes, if you do not have an Aadhaar number, you may apply using your Aadhaar Enrollment ID, but update the Aadhaar on receiving the Aadhaar number, as Aadhaar is mandatory for final scholarship disbursal. 31. Can I apply using Parent’s Aadhaar?"
+            }
+          ]
+        },
+        {
+          "id": "ood-018-hi",
+          "question": "आज कैंपस के पास किसी रेस्तराँ का मेनू क्या है?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "माफ़ कीजिए, मैं इस अनुरोध को पूरा नहीं कर सकता।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p7-c2",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 7,
+              "text": "goals. Hailing from Ladakh, a region with limited educational resources, accessing higher education can be challenging. SSSJKL has been a true game-changer for students like me by easing ﬁnancial burdens and making quality education attainable. SHRIYA TICKOOLNCT, Bhopal I am Shriya Tickoo. With the support of PMSSS, I completed my degree in Electronics Communication and Engineering from Lakshmi Narain College of Technology, Bhopal, and secured a job at Accenture. As a ﬁrst-generation college student, this scholarship has opened doors I once thought were beyond my reach, transforming my future in ways I had never imagined. ARYANArmy Institute of Technology Pune I am Aryan. With the support of the PMSSS,I completed BE in Computer Science Engineering at Army Institute of Technology, Pune, and secured a position as Project Manager at Rolling Arrays. I am deeply grateful for this"
+            }
+          ]
+        },
+        {
+          "id": "ood-018-hx",
+          "question": "Aaj campus ke paas restaurant ka menu kya hai?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे इस बारे में जानकारी नहीं है।",
+          "retrieved_passages": [
+            {
+              "passage_id": "6990a35eb6a3-p1-c1",
+              "document_name": "e1f597c04d674122a5e56bd71d03302b.pdf",
+              "page": 1,
+              "text": "ALL INDIA COUNCIL FOR TECHNICAL EDUCATION, NELSON MANDELA ROAD, VASANT KUNJ New Delhi-110070 Pradhan Mantri Uchchatar Shiksha Protsahan Yojana SPECIAL SCHOLARSHIP SCHEME FOR THE STUDENTS OF UTs OF JAMMU & KASHMIR AND LADAKH ACADEMIC SESSION 2025-26 SSSJKL Registration & Joining Process Implemented By"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-en",
+          "question": "What is the current US dollar to Indian rupee exchange rate?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know the current US dollar to Indian rupee exchange rate.",
+          "retrieved_passages": [
+            {
+              "passage_id": "a5bd4aef292c-p2-c1",
+              "document_name": "ac2356be58174b55e3fc32d953e4fec1.pdf",
+              "page": 2,
+              "text": "year 2022-23, subject to the condition that guidelines of Ministry of Finance and NITI Aayog regarding SC/ST fund allocation of the schemes are adhered to. 3. What is the rate of scholarship under the Scheme? The rate of scholarship is Rs. 12,000/- per annum at Graduation level for first three years of College and University courses and Rs. 20,000/- per annum at Post-Graduation level. Students pursuing technical courses are paid Rs. 20,000/- per annum in the 4th and 5th year. Students pursing B.Tech/ BE would get scholarship for 4 years only i.e Rs. 12000 per annum for first three years and Rs. 20,000 per annum in the 4th year. 4. How a second/ third/ fourth year student gets scholarships? All the students finally selected for scholarship in first year are eligible for renewal of scholarships in 2nd/ 3rd years subject to fulfilment of certain eligibility conditions. The students have to"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-hi",
+          "question": "अमेरिकी डॉलर और भारतीय रुपये की वर्तमान विनिमय दर क्या है?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे वास्तविक‑समय डेटा तक पहुँच नहीं है, इसलिए वर्तमान अमेरिकी डॉलर‑भारतीय रुपये की विनिमय दर प्रदान नहीं कर सकता। नवीनतम दर के लिए विश्वसनीय वित्तीय वेबसाइट या बैंक की साइट देखें।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p2-c1",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 2,
+              "text": "About the Scheme This initiative provides academic fees and maintenance allowances to support students from Jammu & Kashmir and Ladakh pursuing higher education outside the Union Territories. Objective • To Facilitating access to quality education with an aim to equip the youth with knowledge, skills, experience and training for higher academic level/profession. • To build capabilities of the youth of UTs of Jammu & Kashmir and Ladakh by educating, enabling, and empowering them to compete at the national level. • To provide the youth of UTs of Jammu & Kashmir and Ladakh an exposure to other states and union territories’ culture, language, and livelihood and promote the understanding of ‘Ek Bharat Shrestha Bharat.’ As per the Inter- Ministerial Committee, Ministry of Education, Govt. of India 26th Meeting held on 6th July, 2023, SSSJKL (Formerly known as PMSSS) scholarships will only be"
+            }
+          ]
+        },
+        {
+          "id": "ood-019-hx",
+          "question": "Abhi US dollar aur Indian rupee ka exchange rate kya hai?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे वास्तविक‑समय डेटा तक पहुँच नहीं है, इसलिए वर्तमान US डॉलर‑भारतीय रुपये का सटीक विनिमय दर नहीं बता सकता। कृपया किसी विश्वसनीय वित्तीय वेबसाइट या बैंक से नवीनतम दर देखें।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p9-c1",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 9,
+              "text": "Implemented by AICTE OPPORTUNITY TO GRADUATE FROM THE BEST INSTITUTIONS IN THE COUNTRY SPECIAL SCHOLARSHIP SCHEME FOR THE STUDENTS OF UNION TERRITORIES OF JAMMU & KASHMIR AND LADAKH PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA https://www.aicte-india.org/bureaus/jk jkadmission2024@aicte-india.org For all updates refer AICTE website Prof. T.G. Sitharam Chairman, AICTE Parents/Students/ Guardians Admission under the scheme is strictly conducted through the AICTE portal only and not facilitated through NGOs / Agents. BE CAREFUL Implemented by AICTE OPPORTUNITY TO GRADUATE FROM THE BEST INSTITUTIONS IN THE COUNTRY PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM-USP) YOJANA https://www.aicte-india.org/bureaus/jk jkadmission2025@aicte-india.org For all updates refer AICTE website Prof. T.G. Sitharam Chairman, AICTE Parents/Students/ Guardians Admission under the scheme is"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-en",
+          "question": "Will it rain in Ladakh today?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "I don’t know.",
+          "retrieved_passages": [
+            {
+              "passage_id": "41b5b77fd807-p3-c4",
+              "document_name": "6c3220204e6bd68d195b0ae78df9286c.pdf",
+              "page": 3,
+              "text": "Universities Entrance Test (CUET) conducted by National Testing Agency(NTA) for admission outside the J&K and Ladakh in General Stream courses. For details please visit NTA/UGC website frequently. 15. I have passed Diploma in Engineering from J&K and Ladakh. Can I apply under SSSJKL? Answer-Yes, Candidates who want to take admission under Lateral Entry Scheme and have passed Diploma in Engineering from the Polytechnics recognized by UTs of Jammu & Kashmir and Ladakh Directorate of Technical Education not earlier than AY 2023-24 are eligible. Admission under Lateral Entry Scheme will be subject to vacant seats available"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-hi",
+          "question": "क्या आज लद्दाख में बारिश होगी?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे नहीं पता।",
+          "retrieved_passages": [
+            {
+              "passage_id": "c47701e64fad-p2-c3",
+              "document_name": "08a8e0e331e56dc6dcc54adc3a8400fd.pdf",
+              "page": 2,
+              "text": "d of Accreditation (NBA), New Delhi. or 4. Institutions having more than 80% admission consecutively for last 5 Academic Years. 5. For Medical students, the existing process as speciﬁed by the National Medical Council shall continue. 6. All Government Institutions in addition to institutions fulﬁlling NAAC/ NIRF/ NBA criteria approved by 26th IMC for B. Sc. (Nursing), B. Pharmacy and Hotel Management and Catering Technology Courses. 7. Hostel facility criteria is to be relaxed for General Stream courses or any other quality institution located in Delhi, Mumbai, Bangalore, Pune and Hyderabad etc. Participating Education Institutions:"
+            }
+          ]
+        },
+        {
+          "id": "ood-020-hx",
+          "question": "Kya aaj Ladakh mein rain hogi?",
+          "rag_answer": "Insufficient information is available in the uploaded documents to answer this question.",
+          "direct_llm_answer": "मुझे आज के मौसम की वास्तविक जानकारी नहीं है, इसलिए यह बता पाना संभव नहीं है।",
+          "retrieved_passages": [
+            {
+              "passage_id": "41b5b77fd807-p1-c1",
+              "document_name": "6c3220204e6bd68d195b0ae78df9286c.pdf",
+              "page": 1,
+              "text": "Frequently Asked Questions Page 1 | 7 SPECIAL SCHOLARSHIP SCHEME FOR THE UNION TERRITORIES OF JAMMU & KASHMIR AND LADAKH (SSSJKL) UNDER PRADHAN MANTRI UCHCHATAR SHIKSHA PROTSAHAN (PM- USP) YOJANA FREQUENTLY ASKED QUESTIONS (FAQs) FOR ASPIRANTS ACADEMIC YEAR 2025-26 1. I fulfill academic qualification for SSS J&K and Ladakh. What other conditions should I fulfill? Answer - You must fulfill the below mentioned eligibility criteria also i. Domicile of UT of J&K or Ladakh ii. Family income should not exceed Rs. 8.00 Lakh per annum iii. Passed 10+2 Exam from JKBOSE or CBSE affiliated schools located in UT of J&K or Ladakh iv. Passed 10+3 Diploma from UT of J&K or Ladakh Polytechnic (if seeking admission directly in second year in an engineering course). v. Having category certificate as per the reservation policy of UT of Jammu & Kashmir, if wants to avail the benefits. 2. I am an eligible"
+            }
+          ]
+        }
+      ],
+      "threshold_used": 0.43438127636909485
+    }
+  }
+}

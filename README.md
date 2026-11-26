@@ -12,6 +12,7 @@ This is an implementation of the supplied project idea, not a claim that multili
 - Use a LangGraph workflow to retrieve passages, apply a configurable starter evidence threshold, and either abstain or call Groq.
 - Require the answer to use only retrieved excerpts and cite passage IDs. Return the retrieved excerpts and scores for inspection.
 - Ask in English, Hindi (Devanagari), or Hinglish. Although the selected embedding model covers additional languages, this project's supported query languages are limited to these three; evaluate performance on your own dataset.
+- Run a local experiment comparing retrieval methods, RAG QA, and direct LLM QA, with threshold tuning on validation data and separate language-slice metrics.
 
 ## Architecture
 
@@ -31,6 +32,7 @@ The starter stores documents and indexes in memory. Restarting the API clears up
 - [uv](https://docs.astral.sh/uv/) (recommended) or pip
 - A Groq API key for answer generation (get one in the [Groq Console](https://console.groq.com/))
 - Internet access on the first dense retrieval request to download the multilingual embedding model
+- Poppler `pdftotext` is optional; it is used as an extraction fallback for PDFs whose embedded font maps produce corrupted text through `pypdf`.
 
 ## Setup
 
@@ -57,14 +59,9 @@ uv run streamlit run src/multiligual_rag/streamlit_app.py
 
 Open the local URL printed by Streamlit. Add documents in the sidebar, choose a retrieval strategy, and ask a question. FastAPI's interactive API docs are at `http://localhost:8000/docs`; health is at `/health`.
 
-### Try the sample PDF
+### Current sample-document snapshot
 
-Upload [`sample_data/demo_scholarship_policy.pdf`](sample_data/demo_scholarship_policy.pdf) in the sidebar. It is a six-page Hindi document with fictional scholarship details for testing and is not about a real scholarship. The editable Hindi source is [`sample_data/demo_scholarship_policy_hi.html`](sample_data/demo_scholarship_policy_hi.html). Try questions such as:
-
-- English: “What is the minimum exam score?”
-- Hindi: “छात्रवृत्ति के लिए न्यूनतम अंक कितने चाहिए?”
-- Hinglish: “Scholarship ke liye minimum marks kitne chahiye?”
-- Abstention: “विश्वविद्यालय के पुस्तकालय के खुलने का समय क्या है?” (the sample does not cover library hours)
+The eight local PDFs were inventoried on 2026-11-26 in [data/research/source_inventory.csv](data/research/source_inventory.csv). Six English PDFs print government/AICTE issuers, one EdCIL form is pending issuer verification, and one image-only private-foundation scholarship letter is excluded from the government research corpus. The supplied collection page returned HTTP 403 during the provenance check. These files are local sample inputs, not a reviewed research benchmark. The legacy fictional demo seed has been removed; its referenced PDF is not present in `sample_data/`.
 
 To point Streamlit at a different API server, set `API_URL`, for example `API_URL=http://127.0.0.1:8000`.
 
@@ -90,6 +87,14 @@ Example question request:
 
 The response includes `ANSWERABLE`/`UNANSWERABLE`, a lightweight language estimate in `query_type` (`english-likely`, `hindi`, or `hinglish-likely`), an answer, an evidence score, the retrieval strategy, and source passages with document/page/passage identifiers. The language estimate is a simple heuristic, not a language-identification model. The scores and current abstention thresholds are **uncalibrated starter heuristics**. Tune them on a validation split and report held-out results. Do not treat the returned score as calibrated confidence.
 
+## Reproducible evaluation
+
+Use a reviewed JSONL dataset with question, language slice, answerability, reference answer, and gold passage IDs. The schema and current annotation status are in [data/README.md](data/README.md) and [data/research/annotation_guide.md](data/research/annotation_guide.md). The former fictional demo seed has been removed and must not be used as research evidence.
+
+The runner tunes retrieval evidence thresholds on validation examples, then writes `metrics.json` and `predictions.jsonl` for the chosen split. It compares lexical, dense, and hybrid retrieval with Recall@K, Precision@K, Hit Rate@K, and MRR; reports answerability metrics; and compares RAG with a direct Groq QA baseline. An exploratory top-k=1 run on the unreviewed draft is available in [research-results/](research-results/); it is not a validated benchmark. Token F1 is a coarse automatic metric for Hindi and Hinglish and does not certify correctness or faithfulness.
+
+An unreviewed 378-row draft is available at [data/research/qa_dataset_draft.jsonl](data/research/qa_dataset_draft.jsonl); it is built from 106 course-list entries plus 20 easy out-of-domain candidates, with language variants grouped by fact. An exploratory run on its test split is saved under [research-results/](research-results/), but neither the dataset nor its metrics are validated research results. The [research corpus inventory](data/research/README.md) records the source snapshot; the annotation guide defines the review workflow. The official collection page returned HTTP 403 on 2026-11-26, and issuer/URL verification and some document-completeness checks remain outstanding. The former fictional demo seed has been removed; do not present draft-run or fictional demo outputs as validated research evidence.
+
 ## Retrieval and model notes
 
 - **Lexical:** scikit-learn character n-gram TF-IDF helps with names, spelling variation, and some transliteration overlap.
@@ -108,15 +113,17 @@ Create a JSONL file with one object per question. For example:
 {"question":"Scholarship ke liye travel allowance milta hai?","relevant_passage_ids":[],"answerable":false,"language_slice":"hinglish"}
 ```
 
-Keep source inventory, provenance, gold passage IDs, answerability labels, and train/development/test assignments. The project proposal suggests roughly 300–500 examples and at least 15 analyzed difficult cases. The current repository provides the serving and retrieval baseline; answer correctness, citation support, and answerability still need human or task-specific evaluation.
+Keep source inventory, provenance, gold passage IDs, answerability labels, and train/validation/test assignments. The draft dataset has 378 rows but remains unreviewed and narrowly sourced; the reviewed benchmark and 15-case analysis still need to be completed. The current [annotation queue](data/research/annotation_queue.csv) is empty. The former fictional demo seed has been removed.
 
-`multiligual_rag.metrics` includes reusable `retrieval_metrics(...)` (Recall@K, Precision@K, Hit Rate@K, MRR on answerable questions) and `answerability_metrics(...)` (accuracy, precision, recall, F1, and confusion counts). Call these from an experiment script with ranked passage IDs and gold labels for each retrieval method, then report language slices separately.
+`multiligual_rag.metrics` provides reusable retrieval, answerability, exact-match, and token-F1 metric functions. The experiment runner uses them and separates retrieval errors from answer-generation results.
 
 ## Limitations and next steps
 
 - Index and uploaded files live only in process memory and are not shared across multiple workers.
 - PDF extraction quality varies; verify extracted passages, especially tables and scanned PDFs. OCR is not included.
-- The English, Hindi, and Hinglish language/model combination has not been benchmarked here. Hinglish transliteration, rare terms, numbers, and names can fail.
+- The legacy fictional demo PDF is absent from the current `sample_data/`; the small fictional seed does not match the current corpus and is not research data.
+- The current source snapshot is English-only and has unresolved source provenance/completeness questions. Hindi/Hinglish questions exist only in the unreviewed draft; there are no reviewed QA annotations or manual held-out analysis. The only run is exploratory and uses unreviewed labels. See [data/research/README.md](data/research/README.md) and [research-results/README.md](research-results/README.md).
+- The English, Hindi, and Hinglish language/model combination has only been explored on the unreviewed draft, not benchmarked on reviewed data. Hinglish transliteration, rare terms, numbers, and names can fail.
 - Retrieval-score thresholds are placeholders and can produce false answers or false abstentions.
 - Citation IDs identify supplied excerpts; the system does not independently verify that each generated claim is entailed by its cited excerpt.
 - Add a domain-specific labeled evaluation set, threshold calibration, answer/citation evaluation, language-slice metrics, and failure analysis before drawing research conclusions.
@@ -128,7 +135,9 @@ src/multiligual_rag/
   api.py             FastAPI routes, upload extraction, and passage chunking
   graph.py           LangGraph answerability and grounded generation workflow
   retrieval.py       Lexical, multilingual dense, and hybrid retrievers
-  metrics.py         Retrieval and answerability evaluation metrics
+  metrics.py         Retrieval, answerability, and QA metrics
+  evaluate.py        Direct-LLM/RAG comparison and report generation
+  corpus.py          Shared document extraction and passage IDs
   streamlit_app.py   Streamlit frontend
 ```
 
